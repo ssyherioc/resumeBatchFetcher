@@ -1,0 +1,90 @@
+<Page>
+	
+	<!-- 
+	content 下属性：以下这两个属性内容是用来定位真实内容在什么地方的
+	contentOn：id="BPI" 这一层的子节点还不是真正的内容，则使用contentON，用来表示是哪个子节点内，1.1.1 这种格式，第一个1表示是第一个子节点，以此类推
+	属性：
+	subIdStartWith:如果有多个子内容，子内容的ID是以XX开头的, 如果不设置，则认为是只有一层，直接取即可
+	contentLoc:真正内容的位置
+	fetchOrder:是先用subIdStartWith过滤，还是用contentLoc过滤，默认contentLoc
+	
+	msg：
+	kw=key word
+	kwLoc = location
+	
+	json节点释义：
+	ruleClasses: 比如：DateFormatRule 第一个参数为从html中取出的值，第二个为规则参数(如定义为1)，则配置为：DateFormatRule#1
+		如果要新定义取值规则，请遵循规则类定义：实现Irule接口，并将类放置于与Irule.java 相同包内
+	isEnum = [Y,N] 默认为N，是否为枚举值
+	dataType =[string, int, float] 返回值类型，默认string
+	createNewRootMap = [true, false] 默认false 在json中根map是否新创建
+	 -->
+	
+
+	<!-- 个人基本信息 -->
+	<content attrName="class" attrValue="resume-section section-basic pngfix" contentLoc="1.0.1" subIdStartWith="" >
+		<json loc="0.0.1" mapName="" jsonName="c_name" createNewRootMap="true" ruleClasses="" /><!-- 中文名，  -->
+		<json loc="0.0.3" mapName="" jsonName="gender" createNewRootMap="true" ruleClasses="" isEnum="Y" dataType="int" /> <!-- 性别 -->
+		<json loc="0.1.1.0" mapName="mobiles" jsonName="name" createNewRootMap="true"  ruleClasses="" />
+		<json loc="0.1.3" mapName="" jsonName="birth_date" createNewRootMap="true"  ruleClasses="ReplaceCharRule#岁,BirthDtRule" />
+		<json loc="0.2.1.0" mapName="emails" jsonName="name" createNewRootMap="true"  ruleClasses="" />
+		<json loc="0.3.1" mapName="" jsonName="start_work_year" createNewRootMap="true"  ruleClasses="ReplaceCharRule#年,StartWorkYearRule" dataType="int"/>
+		<json loc="0.3.3" mapName="" jsonName="marital_status" createNewRootMap="true"  ruleClasses="" isEnum="Y" dataType="int"/>
+		<json loc="0.4.1" mapName="" jsonName="employment_status" createNewRootMap="true"  ruleClasses="" isEnum="Y" dataType="int"/>
+		<json loc="0.4.3" mapName="location" jsonName="c_name" createNewRootMap="true"  ruleClasses=""/>
+	</content>
+	
+	<!-- 当前薪资 -->
+	<content attrName="class" attrValue="resume-section section-basic pngfix" contentLoc="1.3" subIdStartWith="" >
+		<json loc="0.1.3" mapName="" jsonName="CURR_SLARY" createNewRootMap="true"  ruleClasses="CurrSalaryRule" dataType="int"/>
+	</content>
+	
+	<!-- 期望 -->
+	<content attrName="class" attrValue="resume-section section-basic pngfix" contentLoc="1.5" subIdStartWith="" >
+		<json loc="0.0.1" mapName="perfer_industries" jsonName="c_name" createNewRootMap="true" ruleClasses="" isSplit="Y" />
+		<json loc="0.1.1" mapName="functions" jsonName="c_name" createNewRootMap="true" ruleClasses="" isSplit="Y" />
+		<json loc="0.2.1" mapName="prefer_locations" jsonName="c_name" createNewRootMap="true" ruleClasses="" isSplit="Y"/>
+		<json loc="0.3.1" mapName="" jsonName="expected_salary" createNewRootMap="false" ruleClasses="ExpectSalaryRule" dataType="int"/>
+	</content>
+	
+	<!-- 工作经历 -->
+	<content attrName="data-selector" attrValue="work-experience" contentLoc="" subIdStartWith="section-content" >
+		<json loc="0.0" mapName="work_experiences" jsonName="start_date" createNewRootMap="true" ruleClasses="WorkDateFormatRule#0" /><!-- 结束时间 -->
+		<json loc="0.0" mapName="work_experiences" jsonName="end_date" createNewRootMap="false" ruleClasses="WorkDateFormatRule#1" /><!-- 开始时间 -->
+		<json loc="0.1" mapName="work_experiences#company" jsonName="c_name" createNewRootMap="false" ruleClasses="BracketSplitRule#0" />
+		<json loc="1.0.0.0.0" mapName="work_experiences#company" jsonName="company_size" createNewRootMap="false" ruleClasses="SplitRule#1" isEnum="Y" dataType="int"/><!-- 公司规模-->
+		<json loc="1.0.0.0.0" mapName="work_experiences#company" jsonName="company_type" createNewRootMap="false" ruleClasses="SplitRule#0" isEnum="Y" dataType="int"/>
+		<json loc="1.1.1" mapName="work_experiences#title" jsonName="name" createNewRootMap="false"  ruleClasses="" />
+		<json loc="1.3.0.0.1" mapName="work_experiences" jsonName="responsibility" createNewRootMap="false"  ruleClasses="" />
+	</content>
+	
+	<!-- 项目经历 -->
+	 <content attrName="class" attrValue="resume-section section-list" contentLoc="" subIdStartWith="section-content" >
+		<json loc="0.0" mapName="project_experiences" jsonName="start_date" createNewRootMap="true"  ruleClasses="PrjDateFormatRule#0" />
+		<json loc="0.0" mapName="project_experiences" jsonName="end_date" createNewRootMap="false"  ruleClasses="PrjDateFormatRule#1" />
+		<json loc="0.1" mapName="project_experiences" jsonName="name" createNewRootMap="false"  ruleClasses="" />
+		<json loc="1.0.0.2.1" mapName="project_experiences" jsonName="description" createNewRootMap="false"  ruleClasses="" />
+		<json loc="1.0.0.3.1" mapName="project_experiences" jsonName="" createNewRootMap="false"  ruleClasses="" />
+	</content>
+
+	
+	<!-- 教育经历 -->
+	<content attrName="class" attrValue="resume-section section-education" contentLoc="1" subIdStartWith="field " >
+		<json loc="0.0.0" mapName="education_experiences" jsonName="start_date" createNewRootMap="true" ruleClasses="EduDateFormatRule#0" />	
+		<json loc="0.0.0" mapName="education_experiences" jsonName="end_date" createNewRootMap="false" ruleClasses="EduDateFormatRule#1" />	
+		<json loc="0.0.0.0" mapName="education_experiences#school" jsonName="c_name" createNewRootMap="false" ruleClasses="" />
+		<json loc="0.0.2.0" mapName="education_experiences" jsonName="degree" createNewRootMap="false" ruleClasses="" isEnum="Y" dataType="int"/>
+		<json loc="0.0.1.0" mapName="education_experiences#major" jsonName="name" createNewRootMap="false" ruleClasses="" />
+	</content>
+	
+	<!-- 语言能力 -->
+	<content attrName="class" attrValue="resume-section section-language" contentLoc="1.0" subIdStartWith="" >
+		<json loc="0.0.0" mapName="languages" jsonName="c_name" createNewRootMap="true"  ruleClasses="ClearCharRule#(;)" isSplit="Y"/>
+	</content>
+	
+	<!-- 自我评价 -->
+	<content attrName="class" attrValue="resume-section section-introduction" contentLoc="1.0" subIdStartWith="" >
+		<json loc="0.0.0" mapName="" jsonName="career_summary" createNewRootMap="false" ruleClasses="" />
+	</content>
+
+</Page>

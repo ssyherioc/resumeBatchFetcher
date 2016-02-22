@@ -1,0 +1,63 @@
+<Page>
+	<enmu name="marital_status" default="0"><!--  -->
+		<match display="未婚" code="1" /><!--single  -->
+		<match display="已婚" code="2" /><!-- married_no_child -->
+		<match display="保密" code="4" /><!-- divorced -->
+	</enmu>
+	
+	<enmu name="gender" default="2">
+		<match display="男" code="0" /><!-- male -->
+		<match display="女" code="1" /><!-- female -->
+	</enmu>
+	
+	<enmu name="employment_status" default="0">
+		<match display="在职，暂无跳槽打算" code="0" /><!--no_intention  -->
+		<match display="在职，看看新机会" code="4" /><!-- open_talk -->
+		<match display="在职，正在找工作" code="6" /><!-- look_for_job -->
+		<match display="离职，正在找工作" code="6" /><!-- look_for_job -->
+	</enmu>
+	
+	<enmu name="employment_type" default="0">
+		<match display="全职" code="1" /><!-- permanent -->
+		<match display="兼职" code="2" /><!-- casual -->
+		<match display="实习" code="3" /><!-- intern -->
+		<match display="全/兼职" code="0" /><!--unknown  -->
+	</enmu>
+	
+	<enmu name="education_experiences#degree" default="0"><!--  -->
+		<match display="初中及以下" code="0" /><!-- unknown -->
+		<match display="高中" code="0" /><!-- unknown -->
+		<match display="中技" code="0" /><!-- unknown -->
+		<match display="中专" code="6" /><!-- vocational_school -->
+		<match display="大专" code="5" /><!-- diploma -->
+		<match display="本科" code="1" /><!-- bachelor -->
+		<match display="硕士" code="2" /><!-- master -->
+		<match display="MBA" code="7" /><!-- mba -->
+		<match display="博士" code="3" /><!-- phd -->
+	</enmu>
+	
+	<enmu name="work_experiences#company#company_size" default="0">
+		<match display="1-49人" code="1" /><!-- 11_50 -->
+		<match display="50-99人" code="2" /><!-- 51_100 -->
+		<match display="100-499人" code="3" /><!-- 101_500 -->
+		<match display="500-999人" code="4" /><!-- 501_1000 -->
+		<match display="1000-2000人" code="5" /><!-- 1001_5000 -->
+		<match display="2000-5000人" code="5" /><!-- 1001_5000 -->
+		<match display="5000-10000人" code="6" /><!-- 5001_10000 -->
+		<match display="10000人以上" code="7" /><!-- 5001_10000 -->
+	</enmu>
+	
+	
+	<enmu name="work_experiences#company#company_type" default="0"><!-- unknown -->
+		<match display="外商独资／外企办事处" code="1" /><!-- wofe -->
+		<match display="中外合营(合资／合作)" code="2" /><!--  jv-->
+		<match display="国有企业" code="3" /><!-- soe -->
+		<match display="私营／民营企业" code="4" /><!--private  -->
+		<match display="国内上市公司" code="5" /><!-- listed -->
+		<match display="外企代表处" code="1" /><!-- wofe -->
+		<match display="政府机关／非盈利机构" code="0" /><!-- unknown -->
+		<match display="事业单位" code="0" /><!-- unknown -->
+		<match display="其他" code="0" /><!-- unknown -->
+	</enmu>
+
+</Page>
